@@ -3,20 +3,26 @@
 filename = 'deployment0001_GP03FLMB.nc';
 %1a. Use the function "ncdisp" to display information about the data contained in this file
 %-->
-
+ncdisp('deployment0001_GP03FLMB.nc');
 %1b. Use the function "ncreadatt" to extract the latitude and longitude
 %attributes of this dataset
 %-->
 %-->
+lat = ncreadatt('deployment0001_GP03FLMB.nc', '/', 'lat');
+lon = ncreadatt('deployment0001_GP03FLMB.nc', '/', 'lon');
 
 %1c. Use the function "ncread" to extract the variables "time" and
 %"ctdmo_seawater_temperature"
 %-->
 %-->
-
+time= ncread('deployment0001_GP03FLMB.nc', 'time');
+seatemp = ncread('deployment0001_GP03FLMB.nc', 'ctdmo_seawater_temperature');
 % Extension option: Also extract the variable "pressure" (which, due to the
 % increasing pressure underwater, tells us about depth - 1 dbar ~ 1 m
 % depth). How deep in the water column was this sensor deployed?
+
+pressure= ncread('deployment0001_GP03FLMB.nc', 'pressure');
+
 
 %% 2. Converting the timestamp from the raw data to a format you can use
 % Use the datenum function to convert the "time" variable you extracted
